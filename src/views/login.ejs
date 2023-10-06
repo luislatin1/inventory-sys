@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión</title>
+</head>
+<body>
+  <header>
+    <!-- Encabezado de la aplicación -->
+    <h1>Iniciar Sesión</h1>
+  </header>
+
+  <main>
+    <!-- Formulario de inicio de sesión -->
+    <form id="login-form">
+      <label for="username">Nombre de Usuario:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <p><a href="/register">Registrarse</a></p>
+  </main>
+
+  <footer>
+    <!-- Pie de página de la aplicación -->
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('login-form');
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (!username || !password) {
+          alert('Por favor, completa todos los campos');
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            alert('¡Inicio de sesión exitoso!');
+          } else {
+            alert('Inicio de sesión fallido. Verifica tus credenciales.');
+          }
+        } catch (error) {
+          console.error('Error al iniciar sesión:', error);
+          alert('Error al iniciar sesión. Por favor, inténtelo de nuevo más tarde.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

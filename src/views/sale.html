@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto de Venta</title>
+    <link rel="stylesheet" href="/public/assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Punto de Venta</h1>
+    </header>
+    <main>
+        <!-- Contenido del punto de venta -->
+        <h2>Venta</h2>
+        <form id="sale-form">
+            <label for="product-select">Seleccione un producto:</label>
+            <select id="product-select" name="product" required>
+                <!-- Opciones de productos se cargarán dinámicamente con JavaScript -->
+            </select>
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" required>
+            <button type="submit">Agregar al carrito</button>
+        </form>
+        <h2>Carrito de Compras</h2>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filas del carrito se cargarán dinámicamente con JavaScript -->
+            </tbody>
+        </table>
+        <h3>Total: <span id="total">0.00</span></h3>
+        <button id="checkout-button">Finalizar Compra</button>
+    </main>
+    <footer>
+        &copy; 2023 Punto de Venta
+    </footer>
+    <script src="/public/assets/js/sales.js"></script>
+</body>
+</html>
